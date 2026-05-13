@@ -6,7 +6,7 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "tareas-vue-cloudflare",
 	"compatibility_date": "2026-05-13",
-	"main": "server/index.js",
+	//"main": "server/index.js",
 	"assets": {
 		"not_found_handling": "single-page-application"
 	},
