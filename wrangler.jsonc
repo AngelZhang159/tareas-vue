@@ -16,6 +16,16 @@
 	"upload_source_maps": true,
 	"compatibility_flags": [
 		"nodejs_compat"
+	],
+	"routes": [
+		{
+			"pattern": "tareas-vue.angelzhang.dev",
+			"custom_domain": true
+		},
+		{
+			"pattern": "tareas-vue.angelzhang.com",
+			"custom_domain": true
+		}
 	]
 	/**
 	 * Smart Placement
