@@ -1,4 +1,6 @@
 <script setup>
+import tareas from '@/data/tareas'
+
 defineProps({
     tarea: {
         type: Object,
@@ -45,29 +47,12 @@ function cambiarEstado(id, estadoNuevo) {
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
             </button>
-            <button @click="cambiarEstado(tarea.id, 0)" :disabled="(tarea.estado == 0)" class="pendiente cambiarEstado"
-                title="Pendiente">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
-                </svg>
-            </button>
-            <button @click="cambiarEstado(tarea.id, 1)" :disabled="(tarea.estado == 1)" class="enProceso cambiarEstado"
-                title="En proceso">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                </svg>
-            </button>
-            <button @click="cambiarEstado(tarea.id, 2)" :disabled="(tarea.estado == 2)" class="terminado cambiarEstado"
-                title="Terminado">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-            </button>
+            <template v-for="tareaItem in tareas">
+                <button @click="cambiarEstado(tarea.id, tareaItem.id)" :disabled="(tarea.estado == tareaItem.id)"
+                    class="cambiarEstado" :style="{ backgroundColor: tareaItem.color }" :title="tareaItem.nombre">
+                    <img :src="tareaItem.icono">
+                </button>
+            </template>
         </div>
     </div>
 </template>
@@ -104,15 +89,15 @@ p {
 }
 
 .pendiente {
-    background-color: rgba(0, 17, 255, 0.707);
+    background-color: #0011ffb4;
 }
 
 .enProceso {
-    background-color: rgb(255, 255, 109);
+    background-color: #ffff6d;
 }
 
 .terminado {
-    background-color: rgb(111, 255, 111);
+    background-color: #6fff6f;
 }
 
 
